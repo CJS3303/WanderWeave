@@ -1,0 +1,106 @@
+<style>
+    @@font-face {
+        font-family: 'Jumbotron';
+        font-style: normal;
+        font-weight: 400;
+        src: local(''), url('https://fonts.cdnfonts.com/s/107548/jumbotron.woff') format('woff');
+    }
+
+
+    .title
+    {
+        font-family: 'Jumbotron', sans-serif;
+        font-size:  4rem;
+        font-weight: bold
+    
+    }
+    
+    .trip-container
+    {
+        background-color: white;
+        border-radius: 20px;
+
+        
+    }
+    
+    p
+    {
+        margin: 0;
+     }   
+        
+    .trip-labels
+    {
+        display:flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }   
+    .trip-image
+    {
+        width: 100%;
+        border-radius: 20px 28px 0 0;
+    
+    }
+    
+    .background
+    {
+        min-height: 100vw;
+        background-color: #FAFAFA;
+        padding: 30px 80px;
+    }
+    
+    .toolbar
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .add-btn
+    {
+        font-size: 32px;
+    }
+
+</style>
+
+@{
+    List<Trip> trips = ViewBag.trips;
+    
+}
+<div class="background";>
+    <div class="toolbar">
+        <p class="title">My Trips</p>
+        <a class="btn btn-circle btn-outline" asp-action="Add">
+            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+            </svg>
+        </a>
+        
+    </div>    
+    
+    <div class="grid grid-cols-4 w-full place-content-stretch gap-8">
+        @foreach (var trip in trips)
+        {
+            <div class="trip-container">
+                <img class="trip-image" src="https://salutcanada.ca/wp-content/uploads/2022/10/4967545858_aea30e485f_o-1500x770-2.jpg"/>
+                <div class="trip-labels">
+                    <p>@trip.Name</p>
+                    <p>4 DAYS</p>
+                </div>
+                <div class="dropdown dropdown-right">
+                    <div tabindex="0" role="button" class="btn m-1">More</div>
+                    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li>
+                            <form method="POST" asp-action="Delete">
+                                <input type="hidden" name="id"value="@trip.Id"/>
+                                <button type="submit">Delete</button>
+                            </form>
+                        </li>
+                        <li><a asp-action="Trip" asp-route-id="@trip.Id">Edit</a></li>
+                    </ul>
+                </div>
+          </div>
+       }
+</div>        
+    
+
+</div>

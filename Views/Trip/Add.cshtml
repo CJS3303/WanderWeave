@@ -1,0 +1,79 @@
+<div class="hero bg-base-200 min-h-screen">
+    <div class="card bg-base-100 w-full max-w-xl shadow-2xl"> <!-- Increased max-width -->
+        <form method="POST" class="card-body gap-4">
+            <!-- Trip Name Section -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-lg font-semibold">Trip name</span>
+                </label>
+                <input name="name" type="text" placeholder="Give your trip a name"
+                       class="input input-bordered input-lg" required />
+            </div>
+
+            <!-- Country Selection -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-lg font-semibold">Which countries are you going?</span>
+                </label>
+                <select class="select select-bordered" multiple>
+                    <option disabled selected>Select countries...</option>
+                    <option>United States</option>
+                    <option>France</option>
+                    <option>Japan</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+
+            <!-- Date Range Section -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-lg font-semibold">Trip Duration</span>
+                </label>
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label class="label">
+                            <span class="label-text">Start date</span>
+                        </label>
+                        <input type="date" class="input input-bordered w-full" />
+                    </div>
+                    <div class="flex-1">
+                        <label class="label">
+                            <span class="label-text">End date</span>
+                        </label>
+                        <input type="date" class="input input-bordered w-full" />
+                    </div>
+                </div>
+                <div class="text-sm text-gray-500 mt-2">
+                    Use this date range to set the amount of days of the trip.
+                    The exact dates don't matter and won't be visible to your audience.
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text text-lg font-semibold">Who can view your trip?</span>
+                </label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="privacy" class="radio radio-primary" checked />
+                        <span class="label-text">Trip members</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="privacy" class="radio radio-primary" />
+                        <span class="label-text">My followers</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="radio" name="privacy" class="radio radio-primary" />
+                        <span class="label-text">Everyone</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-control mt-6">
+                <button type="submit" class="btn btn-primary btn-lg">Create Trip</button>
+            </div>
+        </form>
+    </div>
+</div>
