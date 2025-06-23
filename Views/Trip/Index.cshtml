@@ -1,3 +1,7 @@
+@{
+    List<Trip> trips = ViewBag.trips;
+}
+
 <style>
     @@font-face {
         font-family: 'Jumbotron';
@@ -62,45 +66,114 @@
 
 </style>
 
-@{
-    List<Trip> trips = ViewBag.trips;
-    
-}
-<div class="background";>
+<div class="background">
     <div class="toolbar">
         <p class="title">My Trips</p>
-        <a class="btn btn-circle btn-outline" asp-action="Add">
-            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+
+        <!-- ► Toggle trigger -->
+        <label for="add-trip-modal" class="btn btn-circle btn-outline add-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0
+                 0 1 0 1h-5v5a.5.5 0 0 1-1 
+                 0v-5h-5a.5.5 0 0 1 
+                 0-1h5v-5A.5.5 0 0 1 8 2"/>
             </svg>
-        </a>
+        </label>
+    </div>
+
+    <!-- ► Modal toggle checkbox (hidden) -->
+    <input type="checkbox" id="add-trip-modal" class="modal-toggle" />
+
+    <!-- ► Modal backdrop & box -->
+    <label for="add-trip-modal" class="modal cursor-pointer">
+        <label class="modal-box relative w-full max-w-sm" for="">
+            <!-- Close button -->
+            <label for="add-trip-modal"
+                   class="btn btn-sm btn-circle absolute right-4 top-4">✕</label>
+
+            <h3 class="text-xl font-semibold mb-4">Create a New Trip</h3>
+
+            <!-- Your form starts here -->
+            <form asp-controller="Trip" asp-action="Add" method="post" class="space-y-4">
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Name</span></label>
+                    <input name="name" type="text"
+                           placeholder="Name"
+                           class="input input-bordered w-full"
+                           required />
+                </div>
+
+                <div class="form-control">
+                    <label class="label"><span class="label-text">Description</span></label>
+                    <textarea name="description"
+                    class="textarea textarea-bordered w-full"
+                    placeholder="Enter Description"></textarea>
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Which countries are you going to?</span>
+                    </label>
+                    <div id="country-dropdown" class="ui fluid multiple search selection dropdown">
+                        <input type="hidden" name="countries">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Countries</div>
+                        <div class="menu">
+                            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                            <!-- Add more countries -->
+                        </div>
+                    </div>
+                </div>
         
-    </div>    
-    
-    <div class="grid grid-cols-4 w-full place-content-stretch gap-8">
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary w-full">Create</button>
+                </div>
+            </form>
+            <!-- Your form ends here -->
+
+        </label>
+    </label>
+
+    <!-- ► Your grid of trips stays unchanged -->
+    <div class="grid grid-cols-4 w-full place-content-stretch gap-8 mt-6">
         @foreach (var trip in trips)
         {
             <div class="trip-container">
-                <img class="trip-image" src="https://salutcanada.ca/wp-content/uploads/2022/10/4967545858_aea30e485f_o-1500x770-2.jpg"/>
+                <img class="trip-image"
+                     Af             alt="Trip photo" />
                 <div class="trip-labels">
                     <p>@trip.Name</p>
                     <p>4 DAYS</p>
                 </div>
                 <div class="dropdown dropdown-right">
                     <div tabindex="0" role="button" class="btn m-1">More</div>
-                    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                    <ul tabindex="0"
+                        class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                         <li>
                             <form method="POST" asp-action="Delete">
-                                <input type="hidden" name="id"value="@trip.Id"/>
+                                <input type="hidden" name="id" value="@trip.Id" />
                                 <button type="submit">Delete</button>
                             </form>
                         </li>
                         <li><a asp-action="Trip" asp-route-id="@trip.Id">Edit</a></li>
                     </ul>
                 </div>
-          </div>
-       }
-</div>        
-    
-
+            </div>
+        }
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+
+        $('.dropdown')
+            .dropdown({
+                action: 'combo'
+            })
+        ;
+    </script>
+}

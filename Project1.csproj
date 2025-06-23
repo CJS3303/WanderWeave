@@ -23,4 +23,36 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Views\Trip\wwwroot\**" />
+      <Compile Remove="wwwroot\css\Countries\Countries\**" />
+      <Compile Remove="wwwroot\css\Countries\**" />
+      <Compile Remove="wwwroot\css\Images\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Views\Trip\wwwroot\**" />
+      <EmbeddedResource Remove="wwwroot\css\Countries\Countries\**" />
+      <EmbeddedResource Remove="wwwroot\css\Countries\**" />
+      <EmbeddedResource Remove="wwwroot\css\Images\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Views\Trip\wwwroot\**" />
+      <Content Remove="wwwroot\css\Countries\Countries\**" />
+      <Content Remove="wwwroot\css\Countries\**" />
+      <Content Remove="wwwroot\css\Images\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Views\Trip\wwwroot\**" />
+      <None Remove="wwwroot\css\Countries\Countries\**" />
+      <None Remove="wwwroot\css\Countries\**" />
+      <None Remove="wwwroot\css\Images\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\Images\Countries\" />
+    </ItemGroup>
+
 </Project>

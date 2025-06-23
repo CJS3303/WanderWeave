@@ -3,66 +3,55 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Project1</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css"/>
+    <title>@ViewData["Title"] – Wander Weave</title>
+
+    <!-- Tailwind + DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
+          rel="stylesheet"/>
+
+    <!-- your global CSS -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Project1.styles.css" asp-append-version="true"/>
+
+    <!-- Semantic-UI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <style>
+        .ui.flag {
+            background-image: url(https://cdn.jsdelivr.net/npm/semantic-ui-flag@2.5.0/flags.png);
+            width: 16px;
+            height: 11px;
+            background-size: cover;
+        }
+        /* Fix z-index conflict */
+        .ui.selection.dropdown {
+            z-index: 10000 !important;
+        }
+    </style>
+
+    <!-- page‐specific CSS -->
+    @RenderSection("Styles", required: false)
 </head>
 <body>
 <header>
     <div class="navbar bg-base-100">
-        <div class="flex-1">
-            <a class="btn btn-ghost text-xl">daisyUI</a>
-        </div>
-        <div class="flex-none">
-            <ul class="menu menu-horizontal px-1">
-                <li><a>Link</a></li>
-                <li>
-                    <div class="relative inline-block text-left">
-                        <div>
-                            <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                                Login
-                                <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                    <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
-
-                        <!--
-                          Dropdown menu, show/hide based on menu state.
-                      
-                          Entering: "transition ease-out duration-100"
-                            From: "transform opacity-0 scale-95"
-                            To: "transform opacity-100 scale-100"
-                          Leaving: "transition ease-in duration-75"
-                            From: "transform opacity-100 scale-100"
-                            To: "transform opacity-0 scale-95"
-                        -->
-                        <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                            <div class="py-1" role="none">
-                                <!-- Active: "bg-gray-100 text-gray-900 outline-hidden", Not Active: "text-gray-700" -->
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Profile</a>
-                            </div>
-                            <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-6">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <!-- … -->
     </div>
 </header>
+
 @RenderBody()
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2024 - Project1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
+
+<footer class="border-t py-4 text-center text-sm text-gray-600">
+    &copy; 2024 – Project1 –
+    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 </footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+
+<!-- Inside <body> before closing tag -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Keep Bootstrap last -->
+
+<!-- page‐specific JS -->
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
