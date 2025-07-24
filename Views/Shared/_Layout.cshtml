@@ -9,6 +9,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" />
 
+  <link
+    href="https://cdn.mobiscroll.com/5.24.0/css/mobiscroll.min.css"
+    rel="stylesheet" />
+
   <!-- your global CSS -->
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/Project1.styles.css" asp-append-version="true" />
@@ -27,6 +31,7 @@
            class="h-12 w-auto" />
       <span class="text-2xl font-bold text-teal-600">Wander Weave</span>
     </a>
+
     <!-- main nav links -->
     <ul class="hidden lg:flex items-center space-x-8 text-gray-700 font-medium">
       <li>
@@ -46,19 +51,33 @@
       </li>
     </ul>
 
-    <!-- search + login -->
+    <!-- search + login/logout -->
     <div class="flex items-center space-x-4">
-      <button class="btn btn-ghost btn-circle">
-        <i class="bi bi-search text-xl text-gray-600"></i>
-      </button>
+
+      @if (User.Identity?.IsAuthenticated ?? false)
+      {
+      <form asp-area="Identity"
+            asp-page="/Account/Logout"
+            method="post"
+            class="inline">
+        <button type="submit"
+                class="px-5 py-2 rounded bg-red-500 text-white font-semibold hover:opacity-90">
+          Logout
+        </button>
+      </form>
+      }
+      else
+      {
       <a asp-area="Identity"
          asp-page="/Account/Login"
          class="px-5 py-2 rounded bg-[#3AA7BC] text-white font-semibold hover:opacity-90">
         Login
       </a>
+      }
     </div>
   </nav>
 </header>
+
 
 <!-- yield page content -->
 <main class="flex-grow">
@@ -74,6 +93,8 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.mobiscroll.com/5.24.0/js/mobiscroll.min.js"></script>
+
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

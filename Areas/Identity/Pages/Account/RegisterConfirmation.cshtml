@@ -1,23 +1,47 @@
 ﻿@page
-@model RegisterConfirmationModel
+@model Project1.Areas.Identity.Pages.Account.ExternalLoginModel
 @{
-    ViewData["Title"] = "Register confirmation";
+    ViewData["Title"] = "Associate Account";
 }
 
-<h1>@ViewData["Title"]</h1>
-@{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
-    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
-</p>
-    }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
-}
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
+        <h1 class="text-3xl font-semibold text-center text-gray-900">@ViewData["Title"]</h1>
+        <p class="mt-2 text-center text-gray-600">
+            You’ve successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
+            Please enter an email below to complete registration.
+        </p>
+        <form asp-page-handler="Confirmation"
+              asp-route-returnUrl="@Model.ReturnUrl"
+              method="post"
+              class="mt-8 space-y-6">
+      
+            <div asp-validation-summary="ModelOnly" class="text-sm text-red-600" role="alert"></div>
 
+            <div>
+                <label asp-for="Input.Email" class="block text-sm font-medium text-gray-700">
+                    Email Address
+                </label>
+                <input asp-for="Input.Email"
+                       autocomplete="email"
+                       placeholder="you@example.com"
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-full placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-[#338a9b] focus:border-[#338a9b]" />
+                <span asp-validation-for="Input.Email" class="text-sm text-red-600"></span>
+            </div>
+
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 bg-[#338a9b] hover:bg-[#2c7484]
+                       text-white font-medium rounded-full shadow focus:outline-none focus:ring-2
+                       focus:ring-offset-2 focus:ring-[#338a9b]">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

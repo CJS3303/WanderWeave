@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pDZp0CUT/rKH2ABJmFnAVCxSUHnIXguVAhPeq3I8cfc=",
+  "Hash": "4M2iqgrovS7xonyLzJVk0ue8n6jAQytHnHzWfUB4+DM=",
   "Source": "Project1",
   "BasePath": "_content/Project1",
   "Mode": "Default",
@@ -1233,12 +1233,12 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/afghanistan.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/afghanistan.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/afghanistan.jpg",
+      "RelativePath": "images/Countries/afghanistan.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1249,15 +1249,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/afghanistan.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/afghanistan.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/albania.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/albania.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/albania.jpg",
+      "RelativePath": "images/Countries/albania.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1268,15 +1268,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/albania.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/albania.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/algeria.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/algeria.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/algeria.jpg",
+      "RelativePath": "images/Countries/algeria.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1287,15 +1287,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/algeria.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/algeria.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/andorra.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/andorra.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/andorra.jpg",
+      "RelativePath": "images/Countries/andorra.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1306,15 +1306,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/andorra.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/andorra.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/angola.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/angola.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/angola.png",
+      "RelativePath": "images/Countries/angola.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1325,15 +1325,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/angola.png"
+      "OriginalItemSpec": "wwwroot/images/Countries/angola.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/antarctica.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/antarctica.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/antarctica.jpg",
+      "RelativePath": "images/Countries/antarctica.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1344,15 +1344,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/antarctica.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/antarctica.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/antigua.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/antigua.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/antigua.jpg",
+      "RelativePath": "images/Countries/antigua.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1363,15 +1363,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/antigua.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/antigua.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/argentina.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/argentina.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/argentina.jpg",
+      "RelativePath": "images/Countries/argentina.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1382,15 +1382,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/argentina.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/argentina.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/armenia.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/armenia.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/armenia.jpg",
+      "RelativePath": "images/Countries/armenia.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1401,15 +1401,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/armenia.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/armenia.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/australia.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/australia.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/australia.jpg",
+      "RelativePath": "images/Countries/australia.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1420,15 +1420,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/australia.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/australia.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/austria.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/austria.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/austria.jpg",
+      "RelativePath": "images/Countries/austria.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1439,15 +1439,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/austria.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/austria.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/bahamas.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/bahamas.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/bahamas.jpg",
+      "RelativePath": "images/Countries/bahamas.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1458,15 +1458,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/bahamas.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/bahamas.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/bahrain.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/bahrain.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/bahrain.jpg",
+      "RelativePath": "images/Countries/bahrain.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1477,15 +1477,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/bahrain.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/bahrain.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/bangladesh.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/bangladesh.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/bangladesh.jpg",
+      "RelativePath": "images/Countries/bangladesh.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1496,15 +1496,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/bangladesh.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/bangladesh.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/barbados.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/barbados.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/barbados.jpg",
+      "RelativePath": "images/Countries/barbados.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1515,15 +1515,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/barbados.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/barbados.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/belarus.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/belarus.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/belarus.jpg",
+      "RelativePath": "images/Countries/belarus.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1534,15 +1534,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/belarus.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/belarus.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/belgium.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/belgium.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/belgium.jpg",
+      "RelativePath": "images/Countries/belgium.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1553,15 +1553,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/belgium.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/belgium.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/belize.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/belize.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/belize.jpg",
+      "RelativePath": "images/Countries/belize.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1572,15 +1572,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/belize.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/belize.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Countries/benin.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Countries/benin.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Countries/benin.jpg",
+      "RelativePath": "images/Countries/benin.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1591,15 +1591,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Countries/benin.jpg"
+      "OriginalItemSpec": "wwwroot/images/Countries/benin.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/easy-plan.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/easy-plan.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/easy-plan.png",
+      "RelativePath": "images/easy-plan.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1610,15 +1610,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/easy-plan.png"
+      "OriginalItemSpec": "wwwroot/images/easy-plan.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/logo.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/logo.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/logo.png",
+      "RelativePath": "images/logo.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1629,15 +1629,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/logo.png"
+      "OriginalItemSpec": "wwwroot/images/logo.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Mal.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Mal.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Mal.png",
+      "RelativePath": "images/Mal.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1648,15 +1648,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Mal.png"
+      "OriginalItemSpec": "wwwroot/images/Mal.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/ME.JPG",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/ME.JPG",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/ME.JPG",
+      "RelativePath": "images/ME.JPG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1667,15 +1667,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/ME.JPG"
+      "OriginalItemSpec": "wwwroot/images/ME.JPG"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Panta.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Panta.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Panta.png",
+      "RelativePath": "images/Panta.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1686,15 +1686,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Panta.png"
+      "OriginalItemSpec": "wwwroot/images/Panta.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic1.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/pic1.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/pic1.jpg",
+      "RelativePath": "images/pic1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1705,15 +1705,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/pic1.jpg"
+      "OriginalItemSpec": "wwwroot/images/pic1.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic2.jpg",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/pic2.jpg",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/pic2.jpg",
+      "RelativePath": "images/pic2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1724,15 +1724,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/pic2.jpg"
+      "OriginalItemSpec": "wwwroot/images/pic2.jpg"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic3.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/pic3.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/pic3.png",
+      "RelativePath": "images/pic3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1743,15 +1743,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/pic3.png"
+      "OriginalItemSpec": "wwwroot/images/pic3.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/South_Africa.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/South_Africa.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/South_Africa.png",
+      "RelativePath": "images/South_Africa.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1762,15 +1762,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/South_Africa.png"
+      "OriginalItemSpec": "wwwroot/images/South_Africa.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Switzerland.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/Switzerland.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/Switzerland.png",
+      "RelativePath": "images/Switzerland.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1781,15 +1781,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/Switzerland.png"
+      "OriginalItemSpec": "wwwroot/images/Switzerland.png"
     },
     {
-      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/tour.png",
+      "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/images/tour.png",
       "SourceId": "Project1",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/",
       "BasePath": "_content/Project1",
-      "RelativePath": "Images/tour.png",
+      "RelativePath": "images/tour.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1800,7 +1800,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Images/tour.png"
+      "OriginalItemSpec": "wwwroot/images/tour.png"
     },
     {
       "Identity": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/js/site.js",

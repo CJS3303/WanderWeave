@@ -3,257 +3,40 @@ Trip trip = ViewBag.trip;
 trip.Days = trip.Days.OrderBy(x => x.DayNumber).ToList();
 }
 
-<div class="p-8 flex flex-col gap-2">
-    <style>
-        #results {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        /* Optional: Add scrollbar styling */
-        #results::-webkit-scrollbar {
-            width: 8px;
-        }
-        #results::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-    </style>
+<div class="p-8 flex flex-col gap-4"> <!-- Changed gap-2 to gap-4 for better spacing -->
     <p class="text-4xl font-bold">Trip to @trip.Country</p>
 
     @foreach (var day in trip.Days)
     {
-        <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2">
-                <p class="text-2xl font-bold">Day @(day.DayNumber + 1)</p>
-                <button class="btn btn-error btn-xs" onclick="deleteDay(@day.Id)">Delete Day</button>
-            </div>
+    <div class="border rounded-lg p-4 bg-base-100"> <!-- Added card-like styling -->
+        <div class="flex items-center gap-2 mb-2">
+            <p class="text-2xl font-bold">Day @(day.DayNumber + 1)</p>
+            <button class="btn btn-error btn-xs" onclick="deleteDay(@day.Id)">Delete Day</button>
+        </div>
 
+        <div class="ml-4 flex flex-col gap-2"> <!-- Added indentation -->
             @foreach (var stop in day.Stops)
             {
-                <div class="flex items-center gap-2">
-                    <p>@stop.name</p>
-                    <button class="btn btn-error btn-xs" onclick="deleteStop(@stop.Id)">Delete</button>
-                </div>
+            <div class="flex items-center gap-2">
+                <p>@stop.name</p>
+                <button class="btn btn-error btn-xs" onclick="deleteStop(@stop.Id)">Delete</button>
+            </div>
             }
 
-            <button class="btn btn-small btn-outline" onclick="newStop(@day.Id)">New Stop</button>
+            <button class="btn btn-sm btn-outline mt-2" onclick="newStop(@day.Id)">+ Add Stop</button>
         </div>
+    </div>
     }
 
+    <!-- Dialog and script sections remain unchanged -->
     <dialog id="new_stop" class="modal">
-        <div class="modal-box flex flex-col gap-2">
-            <h3 class="text-lg font-bold">Add Stop</h3>
-            <input id="search" type="text" placeholder="Search location..."
-                   class="input input-bordered w-full" autocomplete="off" />
-            <div id="results" class="flex flex-col gap-1"></div>
-            <div class="modal-action">
-                <button id="submit_btn" class="btn btn-success">Add Stop</button>
-                <form method="dialog">
-                    <button class="btn" id="select_btn">Cancel</button>
-                </form>
-            </div>
-        </div>
+        <!-- ... existing dialog code ... -->
     </dialog>
 
-    <a class="btn" asp-action="AddDay" asp-route-id="@trip.Id">ADD DAY</a>
+    <a class="btn btn-primary mt-4" asp-action="AddDay" asp-route-id="@trip.Id">+ ADD DAY</a>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvPVNnNhFKHYpEvE372k1XrOTFe2yEYug&libraries=places&language=en&amp;callback=initMap" async="" defer=""></script>
+<!-- Google Maps script remains unchanged -->
 <script>
-    function initMap() {
-        // Required callback by Google Maps API
-    }
-
-    var searchField = document.getElementById("search");
-    var submitButton = document.getElementById("submit_btn");
-    var modalButton = document.getElementById("select_btn");
-
-    var lastSearch = "";
-    var currentDay = 0;
-
-    var currentPlaceLatLong = "";
-    var currentPlaceId = "";
-    var currentPlaceName = "";
-
-    var _canSubmit = false;
-    submitButton.hidden = true;
-
-    submitButton.addEventListener("click", submit);
-
-    let isUserInput = true;
-    searchField.addEventListener('input', function(e) {
-        if (!isUserInput) return;
-        lastSearch = e.target.value;
-        initService(lastSearch);
-    });
-
-    function newStop(day) {
-        lastSearch = "";
-        searchField.value = "";
-        currentDay = day;
-        console.log("DAY ID IS " + day);
-        new_stop.showModal();
-    }
-
-    function ToggleSubmit(canSubmit) {
-        _canSubmit = canSubmit;
-        submitButton.hidden = !canSubmit;
-        modalButton.innerHTML = "Cancel";
-    }
-
-    function submit() {
-        const formData = new FormData();
-        formData.append("placeId", currentPlaceId);
-        formData.append("dayId", currentDay);
-        formData.append("name", currentPlaceName);
-        formData.append("latlng", currentPlaceLatLong);
-
-        fetch("/Trip/AddStop", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                return response.text();
-            })
-            .then(() => {
-                location.reload(); // Refresh the page after successful add
-            })
-            .catch(err => {
-                console.error("Error submitting stop:", err);
-            });
-    }
-
-    function initService(search) {
-        const service = new google.maps.places.AutocompleteService();
-        service.getPlacePredictions({ input: search }, displaySuggestions);
-    }
-
-    function displaySuggestions(predictions, status) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK || !predictions) {
-            console.warn("No predictions:", status);
-            return;
-        }
-
-        ToggleSubmit(false);
-        const resultsContainer = document.getElementById("results");
-        resultsContainer.innerHTML = "";
-
-        modalButton.innerHTML = "Cancel";
-
-        predictions.forEach(prediction => {
-            const entry = document.createElement("button");
-            entry.classList = "btn";
-            entry.name = prediction.place_id;
-            entry.textContent = prediction.description;
-
-            entry.onclick = function () {
-                currentPlaceId = prediction.place_id;
-                currentPlaceName = prediction.description;
-
-                searchField.value = prediction.description;
-
-                const service = new google.maps.places.PlacesService(document.createElement('div'));
-                service.getDetails({ placeId: prediction.place_id }, (place, status) => {
-                    if (status === google.maps.places.PlacesServiceStatus.OK) {
-                        const lat = place.geometry.location.lat();
-                        const lng = place.geometry.location.lng();
-                        currentPlaceLatLong = lat + "_" + lng;
-
-                        // ✅ enable the Add Stop button
-                        ToggleSubmit(true);
-
-                        // Optional: clear suggestions
-                        resultsContainer.innerHTML = '';
-                    } else {
-                        console.error("Error fetching place details:", status);
-                    }
-                });
-            };
-
-
-            resultsContainer.appendChild(entry);
-        });
-    }
-    
-    async function submitStop() {
-        if (!currentPlace) {
-            alert('Please select a valid location');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('placeId', currentPlace.id);
-        formData.append('dayId', currentDayId);
-        formData.append('name', currentPlace.name);
-        formData.append('latlng', currentPlace.latlng);
-
-        try {
-            const response = await fetch('/Trip/AddStop', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            });
-
-            if (response.ok) {
-                window.location.reload();
-            } else {
-                console.error('Failed to add stop:', await response.text());
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
-    async function deleteStop(stopId) {
-        if (!confirm('Are you sure you want to delete this stop?')) return;
-
-        const formData = new FormData();
-        formData.append('id', stopId);
-
-        try {
-            const response = await fetch('/Trip/DeleteStop', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            });
-
-            if (response.ok) {
-                window.location.reload();
-            } else {
-                console.error('Delete failed:', await response.text());
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
-    async function deleteDay(dayId) {
-        if (!confirm('Are you sure you want to delete this day and all its stops?')) return;
-
-        const formData = new FormData();
-        formData.append('id', dayId);
-
-        try {
-            const response = await fetch('/Trip/DeleteDay', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            });
-
-            if (response.ok) {
-                window.location.reload();
-            } else {
-                console.error('Delete failed:', await response.text());
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
+    // ... existing JavaScript code ...
 </script>

@@ -88,16 +88,19 @@ namespace Project1.Areas.Identity.Pages.Account
         
         public IActionResult OnGet() => RedirectToPage("./Login");
 
+        // in ExternalLoginModel.cs OnPost(...)
         public IActionResult OnPost(string provider, string returnUrl = null)
         {
-            // Request a redirect to the external login provider.
-            var redirectUrl =
-                "https://localhost:5001/Identity/Account/ExternalLogin?handler=Callback";
-
-            var props = _signInManager.ConfigureExternalAuthenticationProperties(
-                provider,
-                redirectUrl
+            // build an *absolute* redirectUri pointing at your 5110 host:
+            var redirectUri = Url.Page(
+                pageName: "/Account/ExternalLogin", 
+                pageHandler: "Callback",
+                values: new { returnUrl },
+                protocol: "http",               // or Request.Scheme if you have HTTPS
+                host: "localhost:5110"          // your Trip‑app host:port
             );
+
+            var props = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUri);
             return new ChallengeResult(provider, props);
         }
 
@@ -121,7 +124,7 @@ namespace Project1.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-                return LocalRedirect(returnUrl);
+                return Redirect("http://localhost:5110/Trip");
             }
             if (result.IsLockedOut)
             {

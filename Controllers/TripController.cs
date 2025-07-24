@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project1.Areas.Identity.Data;
 using Project1.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace Project1.Controllers;
 
@@ -31,8 +33,16 @@ public class TripController : Controller
 
     public IActionResult Add()
     {
+        // Add country list for dropdown
+        var countries = new List<string>
+        {
+            "United States", "Canada", "Mexico", "United Kingdom", "France",
+            "Germany", "Italy", "Japan", "Australia", "Brazil"
+        };
+        ViewBag.Countries = new SelectList(countries);
         return View();
     }
+
 
     [HttpPost]
     public async Task<IActionResult> Add([FromForm] string name, [FromForm] string description, [FromForm] string location)
