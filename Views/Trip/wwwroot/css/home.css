@@ -1,0 +1,88 @@
+/* ----------------------------------------------------------
+   Layout adjustments
+   ---------------------------------------------------------- */
+.home-landing {
+    margin-top: 70px; /* space for fixed navbar */
+}
+
+/* ----------------------------------------------------------
+   Hero Section
+   ---------------------------------------------------------- */
+.hero {
+    min-height: 80vh;
+    background: url('/images/hero-bg-light.png') no-repeat center bottom;
+    background-size: cover;
+    color: #064048;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero .display-1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero .lead {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero .btn-success {
+    background-color: #2ecc71;
+    border: none;
+}
+
+/* ----------------------------------------------------------
+   Features Row
+   ---------------------------------------------------------- */
+.features {
+    background-color: #fafbfd;
+}
+
+.features .feature-item {
+    flex: 1 1 120px;
+    padding: 1rem;
+    color: #8a9aa8;
+    margin-bottom: 1rem;
+}
+
+.features .feature-item i {
+    font-size: 2rem;
+    color: #2ecc71;
+}
+
+.features .feature-item p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* ----------------------------------------------------------
+   Demos Section
+   ---------------------------------------------------------- */
+.demos img {
+    width: 100%;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+footer {
+    background: #fff;
+}
+
+/* ----------------------------------------------------------
+   Global utilities
+   ---------------------------------------------------------- */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.text-center {
+    text-align: center !important;
+}
