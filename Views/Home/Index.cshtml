@@ -3,107 +3,157 @@ ViewData["Title"] = "Home";
 Layout = "_Layout";
 }
 
-@section Styles {
-<style>
-    /* ----------------------------------------------------------
-       Hero background & side illustrations
-       ---------------------------------------------------------- */
-    .hero {
-        background: url('/images/hero-bg-light.png') no-repeat center bottom;
-        background-size: cover;
-    }
-    .illu-left, .illu-right {
-        position: absolute;
-        bottom: 0;
-        pointer-events: none;
-    }
-    .illu-left { left: 0; }
-    .illu-right { right: 0; }
+<main class="flex-grow">
 
-    /* ensure main scrolls below fixed header */
-    main { margin-top: 4rem; }
+    <!-- HERO -->
+    <section class="relative w-full h-[60vh] sm:h-[75vh] overflow-hidden">
+        <!-- full‑bleed background image -->
+        <img
+            src="~/images/pic1.jpg"
+            alt="Hero background"
+            class="absolute inset-0 w-full h-full object-cover"
+        />
+        <!-- optional dark overlay for contrast -->
+        <div class="absolute inset-0 hero-overlay"></div>
 
-    /* cap hero height so we can scroll on smaller screens */
-    .hero { min-height: 75vh; }
-</style>
-}
-
-<main class="relative">
-    <!-- Hero -->
-    <section class="hero relative flex items-center justify-center text-center px-6">
-        <!-- side illustrations (only on lg+) -->
-        <img src="~/images/illu-left.png"  class="illu-left hidden lg:block h-96" alt="" />
-        <img src="~/images/illu-right.png" class="illu-right hidden lg:block h-96" alt="" />
-
-        <div class="relative z-10 max-w-3xl">
-            <h1 class="text-5xl lg:text-6xl font-extrabold">
-                <span class="block text-green-500">One travel app</span>
-                <span class="block text-gray-900">to replace them all</span>
+        <!-- your text + search live here -->
+        <div class="relative container mx-auto px-6 py-24 text-white">
+            <h1 class="text-4xl sm:text-6xl font-serif font-bold drop-shadow-lg">
+                Enjoy Your Vacation
             </h1>
-            <p class="mt-4 text-lg text-gray-700">
-                Streamline every aspect of your trip – from itinerary planning and travel budgeting
-                to packing and wanderlust sharing.
-            </p>
-            <a href="#" class="btn btn-success btn-lg mt-6">Get started. It’s FREE</a>
         </div>
     </section>
+    <section class="py-12 bg-white-50">
+        <div class="container mx-auto pl-80 pr-6 flex items-center justify-start space-x-12">
+            <!-- Easy & Quick Planning -->
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-[#3AA7BC] rounded-full flex items-center justify-center">
+                    <img src="~/images/easy-plan.png"
+                         alt="Easy & Quick Planning"
+                         class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="space-y-1 text-left">
+                    <h3 class="text-xl font-bold">Easy & Quick Planning</h3>
+                    <p class="text-sm text-gray-600 max-w-xs">
+                        Plan your entire trip in just a few clicks, from flights to stays.
+                    </p>
+                </div>
+            </div>
 
-    <!-- Features row -->
-    <section class="py-12 bg-base-200">
-        <div class="container mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 text-center">
-            <div class="flex flex-col items-center">
-                <i class="bi bi-file-earmark-text text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Documents</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-sim text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">eSIM</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-person-circle text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Profile</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-check2-circle text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Checklist</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-calendar4-week text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Planner</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-currency-dollar text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Budget</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-journal-text text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Journal</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="bi bi-camera-reels text-2xl text-gray-400"></i>
-                <span class="mt-2 text-sm text-gray-500">Travel reels</span>
+            <!-- Best Tour Selection -->
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-[#E5FBFF] rounded-full flex items-center justify-center">
+                    <img src="~/images/tour.png"
+                         alt="Best Tour Selection"
+                         class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="space-y-1 text-left">
+                    <h3 class="text-xl font-bold">Best Tour Selection</h3>
+                    <p class="text-sm text-gray-600 max-w-xs">
+                        Explore a wide range of expertly curated tours tailored to your travel style.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Demo screenshots -->
-    <section class="py-12">
-        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div class="lg:col-span-8">
-                <img src="~/images/demo-planner-large.png"
-                     alt="Planner demo"
-                     class="w-full rounded-lg shadow-lg" />
+    
+
+
+    <!-- 3) About Us / Experience Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-40 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Text column -->
+            <div>
+                <div class="text-[#3AA7BC] font-script mb-2">About Me ·•✦</div>
+                <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4">
+                    Experience Adventures<br/>With Me
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    I’m a computer science major who’s as comfortable writing code as I am tracking wildlife across the savannas of Africa, carving fresh lines down New Zealand’s snowy slopes, or drifting through the rainbow reefs of Palau. My dual loves of technology and nature drive me to explore how complex systems—whether algorithms or ecosystems—work together. By bringing the same curiosity and rigor from my studies into every adventure, I aim not only to deepen my understanding of these landscapes but also to develop tools and insights that help protect them for generations to come.
+                </p>
+                <a href="#" class="mt-8 inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
+                    More About ME
+                </a>
             </div>
-            <div class="lg:col-span-4">
-                <img src="~/images/demo-planner-sidebar.png"
-                     alt="Sidebar demo"
-                     class="w-full rounded-lg shadow-lg" />
+
+            <!-- Media column -->
+            <div class="flex justify-center lg:justify-end">
+                <div class="w-[23rem] h-[25rem] rounded-lg overflow-hidden">
+                    <img
+                        src="~/images/ME.JPG"
+                        alt="…"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer note -->
-    <footer class="py-6 text-center text-gray-500">
-        &copy; 2025 stippl. All rights reserved.
-    </footer>
+
+    <!-- 4) Popular Destinations -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="relative bg-gray-200 h-64 rounded-lg overflow-hidden">
+                    <!-- 1) Your photo, filling the container -->
+                    <img
+                        src="~/images/Switzerland.png"
+                        alt="Iceland"
+                        class="absolute inset-0 w-full h-full object-cover"/>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+                        <h3 class="font-semibold">Iceland</h3>
+                    </div>
+                </div>
+                <div class="relative bg-gray-200 h-64 rounded-lg overflow-hidden">
+                    <!-- 1) Your photo, filling the container -->
+                    <img
+                        src="~/images/Mal.png"
+                        alt="Maldives"
+                        class="absolute inset-0 w-full h-full object-cover"/>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+                        <h3 class="font-semibold">Maldives</h3>
+                    </div>
+                </div>
+                <div class="relative bg-gray-200 h-64 rounded-lg overflow-hidden">
+                    <!-- 1) Your photo, filling the container -->
+                    <img
+                        src="~/images/Panta.png"
+                        alt="Panta"
+                        class="absolute inset-0 w-full h-full object-cover"/>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+                        <h3 class="font-semibold">Pantagonia</h3>
+                    </div>
+                </div>
+                <div class="relative bg-gray-200 h-64 rounded-lg overflow-hidden">
+                    <!-- 1) Your photo, filling the container -->
+                    <img
+                        src="~/images/South_Africa.png"
+                        alt="South Africa"
+                        class="absolute inset-0 w-full h-full object-cover"/>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+                        <h3 class="font-semibold">South Africa</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2) Text Column (right column) -->
+            <div>
+                <div class="text-[#3AA7BC] font-script mb-2">Top Destinations ·•✦</div>
+                <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4">
+                    Our Popular Destinations
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    From the windswept plains of the Serengeti to the crystalline fjords of Norway, our most sought‑after destinations span every corner of the globe. Whether you dream of tracing the Milky Way beneath Chile’s high‑altitude skies, wandering ancient tea terraces in Bali, or cycling through the rolling vineyards of Tuscany, we’ve handpicked each locale for its unique blend of natural wonder and cultural richness. Whatever your travel style, our popular destinations offer the perfect balance of adventure, authenticity, and comfort, so you can focus on making memories that last a lifetime.
+                </p>
+                <a href="#" class="inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
+                    All Destinations
+                </a>
+            </div>
+
+        </div>
+    </section>
+    
+
 </main>

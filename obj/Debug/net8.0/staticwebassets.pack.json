@@ -81,6 +81,50 @@
       "PackagePath": "staticwebassets/Images/Countries/benin.jpg"
     },
     {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/ME.JPG",
+      "PackagePath": "staticwebassets/Images/ME.JPG"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Mal.png",
+      "PackagePath": "staticwebassets/Images/Mal.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Panta.png",
+      "PackagePath": "staticwebassets/Images/Panta.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/South_Africa.png",
+      "PackagePath": "staticwebassets/Images/South_Africa.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/Switzerland.png",
+      "PackagePath": "staticwebassets/Images/Switzerland.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/easy-plan.png",
+      "PackagePath": "staticwebassets/Images/easy-plan.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/logo.png",
+      "PackagePath": "staticwebassets/Images/logo.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic1.jpg",
+      "PackagePath": "staticwebassets/Images/pic1.jpg"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic2.jpg",
+      "PackagePath": "staticwebassets/Images/pic2.jpg"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/pic3.png",
+      "PackagePath": "staticwebassets/Images/pic3.png"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/Images/tour.png",
+      "PackagePath": "staticwebassets/Images/tour.png"
+    },
+    {
       "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

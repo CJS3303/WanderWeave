@@ -2,219 +2,92 @@
 @model LoginModel
 @{
 ViewData["Title"] = "Log in";
-Layout = "_Layout";    // or "~/Areas/Identity/Pages/Shared/_Layout.cshtml"
+Layout = "_Layout";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section Styles {
-<style>
-    :root {
-        --primary-color: #4361ee;
-        --secondary-color: #3f37c9;
-        --accent-color: #4895ef;
-        --light-color: #f8f9fa;
-        --dark-color: #212529;
-        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        --transition: all 0.3s ease;
-    }
+<main class="flex-grow bg-gray-50">
 
-    body {
-        background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  <!-- center everything in a max‑width card -->
+  <section class="py-16">
+    <div class="container mx-auto px-6 max-w-md">
 
-    .login-container {
-        max-width: 1100px;
-        margin: 2rem auto;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--card-shadow);
-        background: white;
-    }
+      <!-- title -->
+      <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">
+        Log in to Wander Weave
+      </h1>
 
-    .login-header {
-        background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 2.5rem;
-        text-align: center;
-    }
+      <div class="space-y-4">
 
-    .login-header h1 {
-        font-weight: 700;
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-    }
+        <!-- social button: Google -->
+        <form method="post"
+              asp-area="Identity"
+              asp-page="/Account/ExternalLogin"
+              asp-route-provider="Google"
+              asp-route-returnUrl="@Model.ReturnUrl"
+              class="w-full">
+          <button type="submit"
+                  class="flex items-center justify-center w-full px-4 py-3 bg-white border border-gray-200 rounded-full shadow-sm hover:shadow-md transition">
+            <img src="~/images/google.svg" alt="Google" class="h-6 w-6 mr-3" />
+            <span class="text-gray-800 font-medium">Sign in with Google</span>
+          </button>
+        </form>
 
-    .login-header p {
-        opacity: 0.9;
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin: 0 auto;
-    }
+      </div>
 
-    .login-form-container {
-        padding: 3rem;
-    }
+      <!-- divider -->
+      <div class="flex items-center my-6">
+        <hr class="flex-grow border-gray-200" />
+        <span class="px-2 text-gray-400">or</span>
+        <hr class="flex-grow border-gray-200" />
+      </div>
 
-    .form-card {
-        border-radius: 15px;
-        border: none;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        transition: var(--transition);
-    }
+      <!-- email/password form -->
+      <form method="post" class="space-y-4">
+        <input type="hidden" asp-for="ReturnUrl" />
+        <partial name="_ValidationScriptsPartial" />
 
-    .form-card:hover {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-card .card-header {
-        background: white;
-        border-bottom: 1px solid #eef2f7;
-        padding: 1.5rem;
-        font-weight: 700;
-        font-size: 1.4rem;
-        color: var(--secondary-color);
-    }
-
-    .form-card .card-body {
-        padding: 1.8rem;
-    }
-
-    .form-floating label {
-        color: #6c757d;
-        font-weight: 500;
-    }
-
-    .form-control {
-        padding: 1rem;
-        border: 2px solid #e2e8f0;
-        border-radius: 10px;
-        transition: var(--transition);
-    }
-
-    .form-control:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
-    }
-
-    .btn-login {
-        background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
-        border: none;
-        padding: 0.8rem;
-        font-weight: 600;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        transition: var(--transition);
-        width: 100%;
-    }
-
-    .btn-login:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 7px 15px rgba(67, 97, 238, 0.3);
-    }
-
-    .login-links a {
-        text-decoration: none;
-        color: var(--primary-color);
-        font-weight: 500;
-        transition: var(--transition);
-    }
-
-    .login-links a:hover {
-        color: var(--secondary-color);
-        text-decoration: underline;
-    }
-
-    .divider {
-        text-align: center;
-        position: relative;
-        margin: 2rem 0;
-    }
-
-    .divider:before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        border-top: 1px solid #e2e8f0;
-        z-index: 1;
-    }
-
-    .divider-text {
-        display: inline-block;
-        background: white;
-        padding: 0 1.5rem;
-        position: relative;
-        z-index: 2;
-        color: #6c757d;
-        font-weight: 500;
-    }
-</style>
-}
-
-<div class="login-container">
-    <div class="row g-0 form-card">
-        <!-- Left half: Header & Social Buttons -->
-        <div class="col-md-6 login-header">
-            <h1>@ViewData["Title"]</h1>
-            <p>Welcome back! Please login to your account</p>
-
-            <div class="social-login my-4">
-                <button class="btn btn-google mb-3 w-100">
-                    <i class="fab fa-google"></i> Continue with Google
-                </button>
-                <button class="btn btn-facebook w-100">
-                    <i class="fab fa-facebook"></i> Continue with Facebook
-                </button>
-            </div>
-
-            <div class="divider">
-                <span class="divider-text">Or</span>
-            </div>
+        <div>
+          <label asp-for="Input.Email" class="block text-gray-700 mb-1">Email Address</label>
+          <input asp-for="Input.Email"
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AA7BC]"
+                 placeholder="you@example.com" />
+          <span asp-validation-for="Input.Email" class="text-red-500 text-sm"></span>
         </div>
 
-        <!-- Right half: Login Form -->
-        <div class="col-md-6 login-form-container">
-            <form method="post" class="card-body">
-                <partial name="_ValidationScriptsPartial" />
-                <div asp-validation-summary="All" class="text-danger"></div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email"
-                           class="form-control"
-                           placeholder="Email" />
-                    <label asp-for="Input.Email">Email</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password"
-                           class="form-control"
-                           placeholder="Password" />
-                    <label asp-for="Input.Password">Password</label>
-                </div>
-
-                <div class="form-check mb-3">
-                    <input asp-for="Input.RememberMe"
-                           class="form-check-input" />
-                    <label asp-for="Input.RememberMe"
-                           class="form-check-label">
-                        Remember me
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-login">
-                    Log in
-                </button>
-
-                <div class="login-links mt-3 text-center">
-                    <a asp-page="./ForgotPassword">Forgot your password?</a><br />
-                    <a asp-page="./Register">Don't have an account? Register</a>
-                </div>
-            </form>
+        <div>
+          <label asp-for="Input.Password" class="block text-gray-700 mb-1">Password</label>
+          <input asp-for="Input.Password"
+                 type="password"
+                 class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AA7BC]"
+                 placeholder="••••••••" />
+          <span asp-validation-for="Input.Password" class="text-red-500 text-sm"></span>
         </div>
+
+        <div class="flex items-center text-sm">
+          <input asp-for="Input.RememberMe" class="h-4 w-4 text-[#3AA7BC] border-gray-300 rounded" />
+          <label asp-for="Input.RememberMe" class="ml-2 text-gray-600">Remember me</label>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-[#3AA7BC] hover:bg-[#338a9b] text-white py-3 rounded-full font-semibold transition">
+          Login
+        </button>
+      </form>
+
+      <!-- footer links -->
+      <div class="mt-6 text-center text-sm text-gray-600 space-y-2">
+        <a asp-page="./ForgotPassword"
+           class="block text-[#3AA7BC] hover:underline">
+          Forgot password?
+        </a>
+        <a asp-page="./Register"
+           class="block text-[#3AA7BC] hover:underline">
+          Create new account
+        </a>
+      </div>
+
     </div>
-</div>
+  </section>
 
-@section Scripts {
-<partial name="_ValidationScriptsPartial" />
-}
+</main>

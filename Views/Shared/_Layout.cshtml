@@ -1,57 +1,79 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] – Wander Weave</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] – WanderWeave</title>
 
-    <!-- Tailwind + DaisyUI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css"
-          rel="stylesheet"/>
+  <!-- Tailwind + DaisyUI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" />
 
-    <!-- your global CSS -->
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/Project1.styles.css" asp-append-version="true"/>
+  <!-- your global CSS -->
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/Project1.styles.css" asp-append-version="true" />
 
-    <!-- Semantic-UI CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
-    <style>
-        .ui.flag {
-            background-image: url(https://cdn.jsdelivr.net/npm/semantic-ui-flag@2.5.0/flags.png);
-            width: 16px;
-            height: 11px;
-            background-size: cover;
-        }
-        /* Fix z-index conflict */
-        .ui.selection.dropdown {
-            z-index: 10000 !important;
-        }
-    </style>
-
-    <!-- page‐specific CSS -->
-    @RenderSection("Styles", required: false)
+  @RenderSection("Styles", required: false)
 </head>
-<body>
-<header>
-    <div class="navbar bg-base-100">
-        <!-- … -->
+<body class="bg-white flex flex-col min-h-screen">
+
+<!-- header / nav -->
+<header class="shadow-sm">
+  <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- logo -->
+    <a class="flex items-center space-x-2" asp-area="" asp-controller="Home" asp-action="Index">
+      <img src="@Url.Content("~/images/logo.png")"
+           alt="WanderWeave"
+           class="h-12 w-auto" />
+      <span class="text-2xl font-bold text-teal-600">Wander Weave</span>
+    </a>
+    <!-- main nav links -->
+    <ul class="hidden lg:flex items-center space-x-8 text-gray-700 font-medium">
+      <li>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center hover:text-[#3AA7BC]">
+          Home <i class="bi bi-chevron-down ml-1 text-sm"></i>
+        </a>
+      </li>
+      <li>
+        <a asp-area="" asp-controller="Destination" asp-action="Index" class="hover:text-[#3AA7BC]">
+          Destination
+        </a>
+      </li>
+      <li>
+        <a asp-area="" asp-controller="Blog" asp-action="Index" class="hover:text-[#3AA7BC]">
+          Blogs
+        </a>
+      </li>
+    </ul>
+
+    <!-- search + login -->
+    <div class="flex items-center space-x-4">
+      <button class="btn btn-ghost btn-circle">
+        <i class="bi bi-search text-xl text-gray-600"></i>
+      </button>
+      <a asp-area="Identity"
+         asp-page="/Account/Login"
+         class="px-5 py-2 rounded bg-[#3AA7BC] text-white font-semibold hover:opacity-90">
+        Login
+      </a>
     </div>
+  </nav>
 </header>
 
-@RenderBody()
+<!-- yield page content -->
+<main class="flex-grow">
+  @RenderBody()
+</main>
 
-<footer class="border-t py-4 text-center text-sm text-gray-600">
-    &copy; 2024 – Project1 –
-    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<!-- footer -->
+<footer class="border-t py-6 text-center text-gray-500">
+  &copy; 2025 WanderWeave. All rights reserved.
 </footer>
 
-<!-- Inside <body> before closing tag -->
+<!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Keep Bootstrap last -->
-
-<!-- page‐specific JS -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
