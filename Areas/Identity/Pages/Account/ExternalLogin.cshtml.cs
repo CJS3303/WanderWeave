@@ -124,7 +124,7 @@ namespace Project1.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-                return LocalRedirect(returnUrl ?? Url.Content("~/Trip"));
+                return LocalRedirect("/Trip");
             }
             if (result.IsLockedOut)
             {

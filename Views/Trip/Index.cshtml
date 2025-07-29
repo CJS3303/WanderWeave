@@ -42,8 +42,32 @@ ViewBag.Title = "My Trips";
         <label for="add-trip-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         <h3 class="text-xl font-semibold mb-4">Create a New Trip</h3>
         <form asp-controller="Trip" asp-action="Add" method="post" class="space-y-4">
-          <!-- name/description/country… same as before -->
-          <!-- … -->
+          <div class="form-control">
+            <label class="label"><span class="label-text">Name</span></label>
+            <input name="name" type="text" placeholder="Name"
+                   class="input input-bordered w-full" required />
+          </div>
+          <div class="form-control">
+            <label class="label"><span class="label-text">Description</span></label>
+            <textarea name="description" class="textarea textarea-bordered w-full"
+                      placeholder="Enter Description"></textarea>
+          </div>
+          <div class="form-control">
+            <label class="label"><span class="label-text">Country</span></label>
+            <select name="location" class="select select-bordered w-full" required>
+              <option value="">Select Country</option>
+              @foreach (var country in ViewBag.Countries)
+              {
+              <option value="@country">@country</option>
+              }
+            </select>
+          </div>
+          <div class="form-control mt-6">
+            <button type="submit"
+                    class="w-full py-2 bg-[#3AA7BC] text-white font-medium rounded-md hover:bg-[#2c7484] transition">
+              Create
+            </button>
+          </div>
         </form>
       </div>
     </div>
