@@ -1,42 +1,191 @@
+@using Project1.Models
+@using System.Linq
+
 @{
-Trip trip = ViewBag.trip;
-trip.Days = trip.Days.OrderBy(x => x.DayNumber).ToList();
+var trip = ViewBag.trip as Trip;
+if (trip?.Days != null)
+{
+trip.Days = trip.Days.OrderBy(d => d.DayNumber).ToList();
+}
 }
 
-<div class="p-8 flex flex-col gap-4"> <!-- Changed gap-2 to gap-4 for better spacing -->
-    <p class="text-4xl font-bold">Trip to @trip.Country</p>
+<section class="container mx-auto p-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-4xl font-extrabold text-[#3AA7BC] mb-6">Trip to @trip?.Country</h1>
 
-    @foreach (var day in trip.Days)
-    {
-    <div class="border rounded-lg p-4 bg-base-100"> <!-- Added card-like styling -->
-        <div class="flex items-center gap-2 mb-2">
-            <p class="text-2xl font-bold">Day @(day.DayNumber + 1)</p>
-            <button class="btn btn-error btn-xs" onclick="deleteDay(@day.Id)">Delete Day</button>
+    <div class="space-y-6">
+        @foreach (var day in trip?.Days ?? Enumerable.Empty<Day>())
+        {
+        <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-semibold text-gray-800">Day @(day.DayNumber + 1)</span>
+                <button
+                    class="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-sm"
+                    onclick="deleteDay(@day.Id)">
+                    Delete Day
+                </button>
+            </div>
+
+            <ul class="space-y-2 mb-4">
+                @foreach (var stop in day.Stops)
+                {
+                <li class="flex items-center justify-between bg-white border border-gray-200 rounded px-4 py-2">
+                    <span class="text-gray-700">@stop.name</span>
+                    <button
+                        class="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs"
+                        onclick="deleteStop(@stop.Id)">
+                        Delete
+                    </button>
+                </li>
+                }
+            </ul>
+
+            <button
+                class="w-full text-left px-4 py-2 border-2 border-[#3AA7BC] text-[#3AA7BC] font-medium rounded hover:bg-[#ebf8fa] transition"
+                onclick="newStop(@day.Id)">
+                + Add Stop
+            </button>
+        </div>
+        }
+    </div>
+
+    <div class="mt-8">
+        <button
+            class="w-full px-6 py-3 bg-[#3AA7BC] hover:bg-[#2A8A9B] text-white font-semibold rounded-lg transition"
+            asp-action="AddDay"
+            asp-route-id="@trip.Id">
+            + ADD DAY
+        </button>
+    </div>
+</section>
+
+<dialog id="new_stop" class="modal">
+    <div class="modal-box flex flex-col gap-4 border-2 border-[#3AA7BC] rounded-lg">
+        <h3 class="text-2xl font-bold text-[#3AA7BC]">Add Stop</h3>
+        <input
+            id="search"
+            class="input input-bordered w-full focus:border-[#3AA7BC] focus:ring-[#3AA7BC]"
+            placeholder="Search location…"
+            autocomplete="off"/>
+
+        <div
+            id="results"
+            class="max-h-48 overflow-y-auto divide-y divide-gray-200 rounded-lg border border-gray-200">
+            <!-- suggestions injected here -->
         </div>
 
-        <div class="ml-4 flex flex-col gap-2"> <!-- Added indentation -->
-            @foreach (var stop in day.Stops)
-            {
-            <div class="flex items-center gap-2">
-                <p>@stop.name</p>
-                <button class="btn btn-error btn-xs" onclick="deleteStop(@stop.Id)">Delete</button>
-            </div>
-            }
-
-            <button class="btn btn-sm btn-outline mt-2" onclick="newStop(@day.Id)">+ Add Stop</button>
+        <div class="modal-action flex justify-end gap-2">
+            <button
+                id="submit_btn"
+                class="px-4 py-2 bg-[#3AA7BC] hover:bg-[#2A8A9B] text-white rounded"
+                hidden>
+                Add Stop
+            </button>
+            <button
+                id="cancel_btn"
+                class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded">
+                Cancel
+            </button>
         </div>
     </div>
+</dialog>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvPVNnNhFKHYpEvE372k1XrOTFe2yEYug&libraries=places&callback=initMap" async defer></script>
+<script>
+    let autocompleteService, newStopDialog, searchField, resultsContainer, submitBtn, cancelBtn;
+    let currentDay = 0, currentPlaceId = "", currentPlaceName = "", currentPlaceLatLong = "";
+
+    function initMap() {
+        autocompleteService = new google.maps.places.AutocompleteService();
     }
 
-    <!-- Dialog and script sections remain unchanged -->
-    <dialog id="new_stop" class="modal">
-        <!-- ... existing dialog code ... -->
-    </dialog>
+    document.addEventListener("DOMContentLoaded", () => {
+        newStopDialog    = document.getElementById("new_stop");
+        searchField      = document.getElementById("search");
+        resultsContainer = document.getElementById("results");
+        submitBtn        = document.getElementById("submit_btn");
+        cancelBtn        = document.getElementById("cancel_btn");
 
-    <a class="btn btn-primary mt-4" asp-action="AddDay" asp-route-id="@trip.Id">+ ADD DAY</a>
-</div>
+        submitBtn.hidden = true;
+        searchField.addEventListener("input", onSearchInput);
+        submitBtn.addEventListener("click", onSubmitStop);
+        cancelBtn.addEventListener("click", () => newStopDialog.close());
+    });
 
-<!-- Google Maps script remains unchanged -->
-<script>
-    // ... existing JavaScript code ...
+    function onSearchInput(e) {
+        const q = e.target.value.trim();
+        if (q.length < 2) {
+            resultsContainer.innerHTML = "";
+            submitBtn.hidden = true;
+            return;
+        }
+        autocompleteService.getPlacePredictions({ input: q }, displaySuggestions);
+    }
+
+    function displaySuggestions(predictions, status) {
+        resultsContainer.innerHTML = "";
+        submitBtn.hidden = true;
+        if (status !== google.maps.places.PlacesServiceStatus.OK || !predictions) return;
+
+        predictions.forEach(pred => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "w-full text-left px-4 py-2 hover:bg-[#ebf8fa]";
+            btn.textContent = pred.description;
+            btn.onclick = () => selectPrediction(pred);
+            resultsContainer.appendChild(btn);
+        });
+    }
+
+    function selectPrediction(pred) {
+        searchField.value = pred.description;
+        currentPlaceId    = pred.place_id;
+        currentPlaceName  = pred.description;
+
+        new google.maps.places.PlacesService(document.createElement("div"))
+            .getDetails({ placeId: pred.place_id }, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    const lat = place.geometry.location.lat(),
+                        lng = place.geometry.location.lng();
+                    currentPlaceLatLong = `${lat}_${lng}`;
+                    submitBtn.hidden = false;
+                    resultsContainer.innerHTML = `
+            <div class="p-3 bg-green-50 border border-green-200 rounded">
+              Selected: ${currentPlaceName}
+            </div>`;
+                }
+            });
+    }
+
+    function newStop(day) {
+        currentDay = day;
+        searchField.value = "";
+        resultsContainer.innerHTML = "";
+        submitBtn.hidden = true;
+        newStopDialog.showModal();
+    }
+
+    function onSubmitStop() {
+        const data = new URLSearchParams({
+            placeId: currentPlaceId,
+            dayId:   currentDay,
+            name:    currentPlaceName,
+            latlng:  currentPlaceLatLong
+        });
+        fetch("/Trip/AddStop", { method: "POST", body: data })
+            .then(r => r.ok ? location.reload() : console.error(r));
+    }
+
+    async function deleteStop(id) {
+        if (!confirm("Delete this stop?")) return;
+        const fd = new FormData(); fd.append("id", id);
+        await fetch("/Trip/DeleteStop", { method: "POST", body: fd });
+        location.reload();
+    }
+
+    async function deleteDay(id) {
+        if (!confirm("Delete this day?")) return;
+        const fd = new FormData(); fd.append("id", id);
+        await fetch("/Trip/DeleteDay", { method: "POST", body: fd });
+        location.reload();
+    }
 </script>
