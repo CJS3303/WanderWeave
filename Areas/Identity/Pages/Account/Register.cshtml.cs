@@ -141,7 +141,7 @@ namespace Project1.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl ?? Url.Content("~/Trip"));
+                        return LocalRedirect("/Trip");
                     }
                 }
                 foreach (var error in result.Errors)
