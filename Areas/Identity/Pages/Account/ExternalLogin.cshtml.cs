@@ -96,8 +96,8 @@ namespace Project1.Areas.Identity.Pages.Account
                 pageName: "/Account/ExternalLogin", 
                 pageHandler: "Callback",
                 values: new { returnUrl },
-                protocol: "http",               // or Request.Scheme if you have HTTPS
-                host: "localhost:5110"          // your Trip‑app host:port
+                protocol: Request.Scheme,               // or Request.Scheme if you have HTTPS
+                host: Request.Host.Value         // your Trip‑app host:port
             );
 
             var props = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUri);
@@ -124,7 +124,7 @@ namespace Project1.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
-                return Redirect("http://localhost:5110/Trip");
+                return LocalRedirect(returnUrl ?? Url.Content("~/Trip"));
             }
             if (result.IsLockedOut)
             {

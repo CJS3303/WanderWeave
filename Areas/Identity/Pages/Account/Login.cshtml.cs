@@ -115,7 +115,7 @@ namespace Project1.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return Redirect("http://localhost:5110/Trip");
+                    return LocalRedirect(returnUrl ?? Url.Content("~/Trip"));
                 }
                 if (result.RequiresTwoFactor)
                 {
