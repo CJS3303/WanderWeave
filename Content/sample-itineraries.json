@@ -1,0 +1,190 @@
+[
+  {
+    "slug": "mauritius",
+    "destination": "Mauritius",
+    "title": "Mauritius — 8-Day Sample Itinerary",
+    "summary": "An island escape with diving, wildlife, mountain hiking and time on the water, travelling from Hong Kong via Dubai.",
+    "stay": "8 days in Mauritius",
+    "travelDates": "Feb 1–10",
+    "destinationDates": "Feb 2–9",
+    "themes": [
+      "Adventure",
+      "Wildlife",
+      "Diving",
+      "Mountains",
+      "Island Escape"
+    ],
+    "days": [
+      {
+        "date": "Feb 1",
+        "activities": [
+          {
+            "time": "18:00",
+            "activity": "Depart Hong Kong Airport",
+            "notes": "Arrive at airport in advance"
+          },
+          {
+            "time": "23:05",
+            "activity": "Arrive at Dubai Airport",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "date": "Feb 2",
+        "activities": [
+          {
+            "time": "02:25",
+            "activity": "Depart Dubai Airport",
+            "notes": ""
+          },
+          {
+            "time": "09:10",
+            "activity": "Arrive in Mauritius",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "date": "Feb 3",
+        "activities": [
+          {
+            "time": "09:30–13:30",
+            "activity": "Blue Bay Diving",
+            "notes": ""
+          },
+          {
+            "time": "Lunch",
+            "activity": "Lunch break",
+            "notes": ""
+          },
+          {
+            "time": "15:00–17:00",
+            "activity": "Pont Naturel / Natural Bridge",
+            "notes": "Southern Mauritius"
+          }
+        ]
+      },
+      {
+        "date": "Feb 4",
+        "activities": [
+          {
+            "time": "—",
+            "activity": "Whale Watching",
+            "notes": "Depart from the marina"
+          }
+        ]
+      },
+      {
+        "date": "Feb 5",
+        "activities": [
+          {
+            "time": "09:00",
+            "activity": "Arrive at Wildlife Park",
+            "notes": ""
+          },
+          {
+            "time": "10:30",
+            "activity": "Walking with Lions",
+            "notes": ""
+          },
+          {
+            "time": "12:30",
+            "activity": "Safari / Sightseeing Vehicle",
+            "notes": ""
+          },
+          {
+            "time": "16:00",
+            "activity": "Return",
+            "notes": "Pass through Baie du Cap"
+          }
+        ]
+      },
+      {
+        "date": "Feb 6",
+        "activities": [
+          {
+            "time": "09:30",
+            "activity": "Helicopter Flight — 25 min",
+            "notes": "Meet at Lavilleon"
+          },
+          {
+            "time": "10:15",
+            "activity": "Return",
+            "notes": "Rest of day at leisure"
+          }
+        ]
+      },
+      {
+        "date": "Feb 7",
+        "activities": [
+          {
+            "time": "09:00",
+            "activity": "Le Morne Brabant",
+            "notes": "Hiking"
+          },
+          {
+            "time": "—",
+            "activity": "Return",
+            "notes": "Free time"
+          }
+        ]
+      },
+      {
+        "date": "Feb 8",
+        "activities": [
+          {
+            "time": "07:45",
+            "activity": "Northern Islands Snorkeling",
+            "notes": "Full-day excursion / three dives"
+          },
+          {
+            "time": "16:00",
+            "activity": "Return",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "date": "Feb 9",
+        "activities": [
+          {
+            "time": "10:10",
+            "activity": "Submarine Experience — 45 min",
+            "notes": ""
+          },
+          {
+            "time": "11:30",
+            "activity": "Fort Adelaide → Red Roof Church → Botanical Garden",
+            "notes": "Northern Mauritius sightseeing"
+          },
+          {
+            "time": "16:00",
+            "activity": "Return",
+            "notes": ""
+          },
+          {
+            "time": "22:30",
+            "activity": "Depart Mauritius Airport",
+            "notes": "Arrive at airport in advance"
+          }
+        ]
+      },
+      {
+        "date": "Feb 10",
+        "activities": [
+          {
+            "time": "10:40",
+            "activity": "Depart Dubai Airport",
+            "notes": ""
+          },
+          {
+            "time": "21:50",
+            "activity": "Arrive at Hong Kong Airport",
+            "notes": ""
+          }
+        ]
+      }
+    ]
+  }
+]

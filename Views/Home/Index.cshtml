@@ -60,38 +60,7 @@ Layout = "_Layout";
     
 
 
-    <!-- 3) About Us / Experience Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-40 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Text column -->
-            <div>
-                <div class="text-[#3AA7BC] font-script mb-2">About Me ·•✦</div>
-                <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4">
-                    Experience Adventures<br/>With Me
-                </h2>
-                <p class="text-gray-600 mb-6">
-                    I’m a computer science major who’s as comfortable writing code as I am tracking wildlife across the savannas of Africa, carving fresh lines down New Zealand’s snowy slopes, or drifting through the rainbow reefs of Palau. My dual loves of technology and nature drive me to explore how complex systems—whether algorithms or ecosystems—work together. By bringing the same curiosity and rigor from my studies into every adventure, I aim not only to deepen my understanding of these landscapes but also to develop tools and insights that help protect them for generations to come.
-                </p>
-                <a href="#" class="mt-8 inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
-                    More About ME
-                </a>
-            </div>
-
-            <!-- Media column -->
-            <div class="flex justify-center lg:justify-end">
-                <div class="w-[23rem] h-[25rem] rounded-lg overflow-hidden">
-                    <img
-                        src="~/images/ME.JPG"
-                        alt="…"
-                        class="w-full h-full object-cover"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- 4) Popular Destinations -->
+    <!-- 3) Popular Destinations -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
@@ -147,11 +116,42 @@ Layout = "_Layout";
                 <p class="text-gray-600 mb-6">
                     From the windswept plains of the Serengeti to the crystalline fjords of Norway, our most sought‑after destinations span every corner of the globe. Whether you dream of tracing the Milky Way beneath Chile’s high‑altitude skies, wandering ancient tea terraces in Bali, or cycling through the rolling vineyards of Tuscany, we’ve handpicked each locale for its unique blend of natural wonder and cultural richness. Whatever your travel style, our popular destinations offer the perfect balance of adventure, authenticity, and comfort, so you can focus on making memories that last a lifetime.
                 </p>
-                <a href="#" class="inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
+                <a asp-controller="Destinations" asp-action="Index" class="inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
                     All Destinations
                 </a>
             </div>
 
+        </div>
+    </section>
+
+
+    <!-- 4) About Us / Experience Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-40 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Text column -->
+            <div>
+                <div class="text-[#3AA7BC] font-script mb-2">About Me ·•✦</div>
+                <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4">
+                    Experience Adventures<br/>With Me
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    I’m a computer science major who’s as comfortable writing code as I am tracking wildlife across the savannas of Africa, carving fresh lines down New Zealand’s snowy slopes, or drifting through the rainbow reefs of Palau. My dual loves of technology and nature drive me to explore how complex systems—whether algorithms or ecosystems—work together. By bringing the same curiosity and rigor from my studies into every adventure, I aim not only to deepen my understanding of these landscapes but also to develop tools and insights that help protect them for generations to come.
+                </p>
+                <a href="#" class="mt-8 inline-block px-6 py-3 bg-[#3AA7BC] text-white rounded-lg">
+                    More About ME
+                </a>
+            </div>
+
+            <!-- Media column -->
+            <div class="flex justify-center lg:justify-end">
+                <div class="w-[23rem] h-[25rem] rounded-lg overflow-hidden">
+                    <img
+                        src="~/images/ME.JPG"
+                        alt="…"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
         </div>
     </section>
     

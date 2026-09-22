@@ -14,6 +14,14 @@ public class Stop
     
     // Add foreign key
     public int DayId { get; set; }
+
+    public int SortOrder { get; set; }
+
+    public TimeSpan? ArrivalTime { get; set; }
+    public TimeSpan? DepartureTime { get; set; }
+
+    [MaxLength(4000), Column(TypeName = "text")]
+    public string Notes { get; set; } = "";
     
     [Column(TypeName = "tinytext")]
     public string name { get; set; }

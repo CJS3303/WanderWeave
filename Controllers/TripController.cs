@@ -21,7 +21,9 @@ public class TripController : Controller
         _userManager = userManager;
     }
     
-    public async Task<IActionResult> AddDay(int id)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddDay(int id, [FromForm] string? name)
     {
         var user = await _userManager.GetUserAsync(User);
         var trip = await _dbContext.Trips
@@ -30,8 +32,16 @@ public class TripController : Controller
 
         if (trip == null) return RedirectToAction("Index");
 
+        if (name?.Trim().Length > 100)
+            return BadRequest("Day names must be at most 100 characters.");
+
+        var orderedDays = trip.Days.OrderBy(d => d.DayNumber).ThenBy(d => d.Id).ToList();
+        for (var i = 0; i < orderedDays.Count; i++)
+            orderedDays[i].DayNumber = i;
+
         var day = new Day()
         {
+            Name = string.IsNullOrWhiteSpace(name) ? $"Untitled {trip.Days.Count + 1}" : name.Trim(),
             DayNumber = trip.Days.Count,
             TripId = trip.Id
         };
@@ -43,6 +53,21 @@ public class TripController : Controller
         return RedirectToAction("Trip", new { id });
     }
     
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> RenameDay(int id, [FromForm] string? name)
+    {
+        if (name?.Trim().Length > 100)
+            return BadRequest("Day names must be at most 100 characters.");
+        var userId = _userManager.GetUserId(User);
+        var day = await _dbContext.Days
+            .FirstOrDefaultAsync(d => d.Id == id && d.Trip.UserId == userId);
+        if (day == null) return NotFound();
+        day.Name = string.IsNullOrWhiteSpace(name) ? $"Untitled {day.DayNumber + 1}" : name.Trim();
+        await _dbContext.SaveChangesAsync();
+        return RedirectToAction("Trip", new { id = day.TripId });
+    }
+
     [HttpGet]
     public async Task<IActionResult> Index(string sortOrder = "default")
     {
@@ -525,25 +550,38 @@ public class TripController : Controller
 
     [HttpPost]
     public async Task<IActionResult> AddStop([FromForm] string placeId, [FromForm] int dayId, 
-        [FromForm] string name, [FromForm] string latlng)
+        [FromForm] string name, [FromForm] string latlng,
+        [FromForm] TimeSpan? arrivalTime, [FromForm] TimeSpan? departureTime, [FromForm] string? notes)
     {
         var user = await _userManager.GetUserAsync(User);
         var day = await _dbContext.Days
             .Include(d => d.Stops)
             .FirstOrDefaultAsync(d => d.Id == dayId);
 
-        if (day == null) return Content("unauthorized");
+        if (day == null) return NotFound("Day not found.");
 
         var trip = await _dbContext.Trips
             .FirstOrDefaultAsync(x => x.Id == day.TripId && x.UserId == user.Id);
         
-        if (trip == null) return Content("unauthorized");
+        if (trip == null) return NotFound("Day not found.");
+
+        if (string.IsNullOrWhiteSpace(placeId) || string.IsNullOrWhiteSpace(name) ||
+            string.IsNullOrWhiteSpace(latlng))
+            return BadRequest("Select a location before adding a stop.");
+
+        if (!ModelState.IsValid || !ValidStopTime(arrivalTime) || !ValidStopTime(departureTime))
+            return BadRequest("Enter valid arrival and departure times.");
+        if (notes?.Length > 4000) return BadRequest("Notes must be at most 4,000 characters.");
 
         var stop = new Stop
         {
+            ArrivalTime = arrivalTime,
+            DepartureTime = departureTime,
+            Notes = notes?.Trim() ?? "",
             placeid = placeId,
             Latlng = latlng,
             name = name,
+            SortOrder = day.Stops.Count == 0 ? 0 : day.Stops.Max(s => s.SortOrder) + 1,
             DayId = day.Id
         };
         
@@ -551,7 +589,61 @@ public class TripController : Controller
         await _dbContext.Stops.AddAsync(stop);
         await _dbContext.SaveChangesAsync();
         
-        return Content("success");
+        return Ok();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> SaveStopNotes(int id, [FromForm] string? notes,
+        [FromForm] TimeSpan? arrivalTime, [FromForm] TimeSpan? departureTime)
+    {
+        if (notes?.Length > 4000) return BadRequest("Notes must be at most 4,000 characters.");
+        var userId = _userManager.GetUserId(User);
+        var stop = await _dbContext.Stops.Include(s => s.Day)
+            .FirstOrDefaultAsync(s => s.Id == id && s.Day.Trip.UserId == userId);
+        if (stop == null) return NotFound();
+        if (!ModelState.IsValid || !ValidStopTime(arrivalTime) || !ValidStopTime(departureTime))
+            return BadRequest("Enter valid arrival and departure times.");
+        stop.ArrivalTime = arrivalTime;
+        stop.DepartureTime = departureTime;
+        stop.Notes = notes?.Trim() ?? "";
+        await _dbContext.SaveChangesAsync();
+        return RedirectToAction("Trip", new { id = stop.Day.TripId });
+    }
+
+    private static bool ValidStopTime(TimeSpan? time) =>
+        !time.HasValue || (time.Value >= TimeSpan.Zero && time.Value < TimeSpan.FromDays(1));
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> MoveStop([FromForm] int id, [FromForm] int dayId,
+        [FromForm] int position)
+    {
+        var userId = _userManager.GetUserId(User);
+        var stop = await _dbContext.Stops.Include(s => s.Day)
+            .FirstOrDefaultAsync(s => s.Id == id && s.Day.Trip.UserId == userId);
+        if (stop == null) return NotFound();
+        var target = await _dbContext.Days.FirstOrDefaultAsync(d => d.Id == dayId &&
+            d.TripId == stop.Day.TripId && d.Trip.UserId == userId);
+        if (target == null) return NotFound();
+
+        var sourceId = stop.DayId;
+        var affected = await _dbContext.Stops
+            .Where(s => s.DayId == sourceId || s.DayId == dayId)
+            .OrderBy(s => s.SortOrder).ThenBy(s => s.Id).ToListAsync();
+        var destination = affected.Where(s => s.DayId == dayId && s.Id != id).ToList();
+        if (position < 0 || position > destination.Count) return BadRequest();
+        destination.Insert(position, stop);
+        stop.Day = target;
+        stop.DayId = target.Id;
+        for (var i = 0; i < destination.Count; i++) destination[i].SortOrder = i;
+        if (sourceId != dayId)
+        {
+            var source = affected.Where(s => s.DayId == sourceId && s.Id != id).ToList();
+            for (var i = 0; i < source.Count; i++) source[i].SortOrder = i;
+        }
+        await _dbContext.SaveChangesAsync();
+        return Ok();
     }
 
     [HttpPost]
@@ -582,14 +674,18 @@ public class TripController : Controller
             .Include(d => d.Stops)
             .FirstOrDefaultAsync(d => d.Id == id && d.Trip.UserId == user.Id);
 
-        if (day != null)
-        {
-            _dbContext.Stops.RemoveRange(day.Stops);
-            _dbContext.Days.Remove(day);
-            await _dbContext.SaveChangesAsync();
-            return RedirectToAction("Trip", new { id = day.Trip.Id });
-        }
+        if (day == null) return NotFound("Day not found.");
 
-        return RedirectToAction("Index");
+        var remainingDays = await _dbContext.Days
+            .Where(d => d.TripId == day.TripId && d.Id != day.Id)
+            .OrderBy(d => d.DayNumber).ThenBy(d => d.Id)
+            .ToListAsync();
+        for (var i = 0; i < remainingDays.Count; i++)
+            remainingDays[i].DayNumber = i;
+
+        _dbContext.Stops.RemoveRange(day.Stops);
+        _dbContext.Days.Remove(day);
+        await _dbContext.SaveChangesAsync();
+        return Ok();
     }
 }

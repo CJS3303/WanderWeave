@@ -40,9 +40,20 @@
         </a>
       </li>
       <li>
-        <a asp-area="" asp-controller="Destination" asp-action="Index" class="hover:text-[#3AA7BC]">
-          Destination
-        </a>
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+          <a asp-area="" asp-controller="Trip" asp-action="Index" class="hover:text-[#3AA7BC]">
+            My Trips
+          </a>
+        }
+        else
+        {
+          <a asp-area="Identity" asp-page="/Account/Login"
+             asp-route-returnUrl="@Url.Action("Index", "Trip", new { area = "" })"
+             class="hover:text-[#3AA7BC]">
+            My Trips
+          </a>
+        }
       </li>
       <li>
         <a asp-area="" asp-controller="Blog" asp-action="Index" class="hover:text-[#3AA7BC]">

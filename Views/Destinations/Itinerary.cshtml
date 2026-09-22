@@ -1,0 +1,51 @@
+@model Project1.Models.SampleItinerary
+@{
+    ViewData["Title"] = Model.Title;
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/sample-itineraries.css" asp-append-version="true" />
+}
+
+<article class="samples-page">
+    <a class="sample-back" asp-action="Index">← All destinations</a>
+    <header class="sample-hero">
+        <p class="sample-eyebrow">Sample itinerary</p>
+        <h1>@Model.Title</h1>
+        <p class="sample-summary">@Model.Summary</p>
+        <ul class="sample-tags" aria-label="Trip themes">
+            @foreach (var theme in Model.Themes) { <li>@theme</li> }
+        </ul>
+        <div class="sample-facts">
+            <div><span>At the destination</span><strong>@Model.DestinationDates</strong><small>@Model.Stay</small></div>
+            <div><span>Including travel</span><strong>@Model.TravelDates</strong><small>Departure and return included</small></div>
+        </div>
+    </header>
+
+    <section class="sample-schedule" aria-labelledby="schedule-title">
+        <div class="sample-schedule-heading">
+            <div><p class="sample-eyebrow">The plan</p><h2 id="schedule-title">Your day-by-day itinerary</h2></div>
+            <p>Sample dates and times</p>
+        </div>
+        <div class="sample-table-scroll" role="region" aria-label="Itinerary schedule" tabindex="0">
+            <table class="sample-table">
+                <caption class="sample-visually-hidden">@Model.Destination sample schedule, @Model.TravelDates</caption>
+                <thead><tr><th scope="col">Date</th><th scope="col">Time</th><th scope="col">Destination / Activity</th><th scope="col">Notes</th></tr></thead>
+                @foreach (var day in Model.Days)
+                {
+                    <tbody>
+                        @for (var index = 0; index < day.Activities.Length; index++)
+                        {
+                            var activity = day.Activities[index];
+                            <tr>
+                                @if (index == 0) { <th class="sample-date" scope="rowgroup" rowspan="@day.Activities.Length">@day.Date</th> }
+                                <td class="sample-time">@activity.Time</td>
+                                <th class="sample-activity" scope="row">@activity.Activity</th>
+                                <td class="sample-notes">@activity.Notes</td>
+                            </tr>
+                        }
+                    </tbody>
+                }
+            </table>
+        </div>
+    </section>
+</article>

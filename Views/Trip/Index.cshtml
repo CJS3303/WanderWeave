@@ -1,25 +1,34 @@
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment
 @{
 Layout = "_Layout";
 var trips = ViewBag.trips as List<Project1.Models.Trip> ?? new();
 ViewBag.Title = "My Trips";
+var countryImages = Environment.WebRootFileProvider.GetDirectoryContents("images/Countries")
+    .Where(file => !file.IsDirectory &&
+        (file.Name.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+         file.Name.EndsWith(".png", StringComparison.OrdinalIgnoreCase)))
+    .ToDictionary(file => System.IO.Path.GetFileNameWithoutExtension(file.Name),
+        file => "~/images/Countries/" + file.Name, StringComparer.OrdinalIgnoreCase);
+countryImages["Antigua and Barbuda"] = "~/images/Countries/antigua.jpg";
+countryImages["South Africa"] = "~/images/South_Africa.png";
+countryImages["Switzerland"] = "~/images/Switzerland.png";
 }
 
 <section class="bg-white-50 py-12">
   <div class="container mx-auto px-6">
 
-    <!-- toolbar: grid/list toggle, count + sort, add button -->
+    <!-- toolbar: grid/list toggle, sort, add button -->
     <div class="flex flex-col md:flex-row items-center justify-between mb-8 space-y-4 md:space-y-0">
-      <!-- 1) grid toggle + count + sort -->
+      <!-- 1) grid toggle + sort -->
       <div class="flex items-center space-x-3">
         <button class="p-2 bg-[#3AA7BC] text-white rounded-md hover:bg-[#2c7484] transition">
           <i class="bi bi-grid-fill"></i>
         </button>
-        <span class="text-gray-600">
-          Showing @trips.Count trips out of @ViewBag.TotalTrips destinations
-        </span>
         <form method="get" class="ml-4">
           <select name="sortOrder"
-                  class="border rounded px-2 py-1"
+                  aria-label="Sort trips"
+                  class="border border-gray-300 bg-white text-gray-800 rounded-md px-3 py-2 focus:border-[#3AA7BC] focus:ring-2 focus:ring-[#3AA7BC]"
+                  style="color-scheme: light;"
                   onchange="this.form.submit()">
             <option value="default"       selected="@( (string)ViewBag.SortOrder == "default" )">Default</option>
             <option value="recent"        selected="@( (string)ViewBag.SortOrder == "recent" )">Most Recent</option>
@@ -77,9 +86,11 @@ ViewBag.Title = "My Trips";
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       @foreach(var trip in trips)
       {
+      var imagePath = countryImages.TryGetValue(trip.Country?.Trim() ?? "", out var countryImage)
+          ? countryImage : "~/images/pic1.jpg";
       <div class="group relative overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition">
         <a asp-action="Trip" asp-route-id="@trip.Id">
-          <img src="@Url.Content("~/images/default-trip.jpg")"
+          <img src="@Url.Content(imagePath)"
                alt="@trip.Name"
                class="object-cover w-full h-48"/>
           <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition"></div>

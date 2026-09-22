@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets/Project1.bundle.scp.css"
     },
     {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/css/sample-itineraries.css",
+      "PackagePath": "staticwebassets/css/sample-itineraries.css"
+    },
+    {
       "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/css/trip-map.css",
+      "PackagePath": "staticwebassets/css/trip-map.css"
     },
     {
       "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/favicon.ico",
@@ -133,8 +141,20 @@
       "PackagePath": "staticwebassets/images/tour.png"
     },
     {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/js/day-name.js",
+      "PackagePath": "staticwebassets/js/day-name.js"
+    },
+    {
       "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/js/stop-drag.js",
+      "PackagePath": "staticwebassets/js/stop-drag.js"
+    },
+    {
+      "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/js/trip-map.js",
+      "PackagePath": "staticwebassets/js/trip-map.js"
     },
     {
       "Id": "/Users/ScieYuan/Desktop/WaterLoooo/Coop/Project1/wwwroot/lib/bootstrap/LICENSE",

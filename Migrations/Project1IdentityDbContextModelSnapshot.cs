@@ -230,6 +230,11 @@ namespace Project1.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<int>("DayNumber")
                         .HasColumnType("int");
 
@@ -250,6 +255,19 @@ namespace Project1.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<TimeSpan?>("ArrivalTime")
+                        .HasColumnType("time(6)");
+                    b.Property<TimeSpan?>("DepartureTime")
+                        .HasColumnType("time(6)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("text");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("int");
 
                     b.Property<int>("DayId")
                         .HasColumnType("int");

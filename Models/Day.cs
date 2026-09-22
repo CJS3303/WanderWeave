@@ -11,6 +11,9 @@ public class Day
     
     public int DayNumber { get; set; }  // Renamed from 'day' for clarity
     
+    [Required, MaxLength(100)]
+    public string Name { get; set; } = "Untitled 1";
+
     // Add relationship to Trip
     public int TripId { get; set; }
     public Trip Trip { get; set; }

@@ -54,6 +54,7 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\images\Countries\" />
+      <Content Update="Content/sample-itineraries.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
 
 </Project>

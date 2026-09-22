@@ -1,0 +1,39 @@
+@model Project1.Models.SampleItinerary[]
+@{
+    ViewData["Title"] = "Destinations & sample itineraries";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/sample-itineraries.css" asp-append-version="true" />
+}
+
+<section class="samples-page">
+    <a class="sample-back" asp-controller="Home" asp-action="Index">← Home</a>
+    <header class="samples-intro">
+        <p class="sample-eyebrow">A little inspiration for your next trip</p>
+        <h1>Destinations &amp; sample itineraries</h1>
+        <p>Explore a day-by-day plan, find a few favourites, and make the journey your own.</p>
+    </header>
+    <div class="sample-grid">
+        @foreach (var sample in Model)
+        {
+            <article class="sample-card">
+                <div class="sample-card-banner">
+                    <span class="sample-label">Sample itinerary</span>
+                    <h2>@sample.Destination</h2>
+                    <p>@sample.Stay</p>
+                </div>
+                <div class="sample-card-body">
+                    <p>@sample.Summary</p>
+                    <ul class="sample-tags" aria-label="Trip themes">
+                        @foreach (var theme in sample.Themes) { <li>@theme</li> }
+                    </ul>
+                    <a class="sample-button" asp-action="Itinerary" asp-route-slug="@sample.Slug">Explore @sample.Destination <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+        }
+    </div>
+    @if (Model.Length == 0)
+    {
+        <p class="sample-empty">New sample itineraries are on the way. Check back soon.</p>
+    }
+</section>
