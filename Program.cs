@@ -3,7 +3,22 @@ using Microsoft.EntityFrameworkCore;
 using Project1.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.HttpOverrides;
 var builder = WebApplication.CreateBuilder(args);
+
+var isHeroku = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DYNO"));
+if (isHeroku)
+{
+    builder.Services.Configure<ForwardedHeadersOptions>(options =>
+    {
+        // Heroku terminates TLS at its router. Trust only the forwarded scheme;
+        // dynos are reached through Heroku's routers, whose addresses can change.
+        options.ForwardedHeaders = ForwardedHeaders.XForwardedProto;
+        options.KnownNetworks.Clear();
+        options.KnownProxies.Clear();
+    });
+    builder.Services.AddHttpsRedirection(options => options.HttpsPort = 443);
+}
 
 string connectionString = "Server=43.154.234.161;Port=4592;User Id=yuanyuan;Password=yuanlovejc;Database=yuanyuan;";
 
@@ -26,6 +41,12 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+// Restore the public scheme before HTTPS redirects and OAuth callback generation.
+if (isHeroku)
+{
+    app.UseForwardedHeaders();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
